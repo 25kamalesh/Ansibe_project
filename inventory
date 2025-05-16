@@ -1,0 +1,21 @@
+all:
+  hosts:
+    target_machine01:
+        ansible_host: 172.31.80.164
+
+    target_machine02:
+        ansible_host: 172.31.92.155
+  
+
+    target_machine03:
+      ansible_host: 172.31.88.74
+
+  children:
+    target_machine_grp:
+      hosts: 
+        target_machine01:
+        target_machine02:
+        target_machine03:
+      vars:
+        ansible_user: ubuntu
+        ansible_ssh_private_key_file: T_login_key.pem
