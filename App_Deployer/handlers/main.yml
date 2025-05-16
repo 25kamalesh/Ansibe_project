@@ -1,0 +1,10 @@
+#SPDX-License-Identifier: MIT-0
+---
+# handlers file for App_Deployer
+- name: Start Server using npm run dev
+  command:
+    chdir: /root/DEVOPS_NAVIGATOR/
+    cmd: npm run dev
+  async: 1000
+  poll: 0
+

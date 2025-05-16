@@ -1,0 +1,6 @@
+#SPDX-License-Identifier: MIT-0
+---
+# defaults file for App_Deployer
+source_folder: ansible_deployment/DEVOPS_NAVIGATOR/
+remote_dest_folder: /root/DEVOPS_NAVIGATOR/
+

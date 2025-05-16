@@ -1,14 +1,13 @@
 all:
   hosts:
     target_machine01:
-        ansible_host: 172.31.80.164
+      ansible_host: 172.31.87.27
 
     target_machine02:
-        ansible_host: 172.31.92.155
-  
-
+      ansible_host: 172.31.81.148
+    
     target_machine03:
-      ansible_host: 172.31.88.74
+      ansible_host: 172.31.93.198
 
   children:
     target_machine_grp:

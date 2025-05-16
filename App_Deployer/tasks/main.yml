@@ -1,0 +1,43 @@
+#SPDX-License-Identifier: MIT-0
+
+- name: Update Cache on Ubuntu Machine
+  apt:
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+  when: ansible_distribution == "Ubuntu"
+
+- name: Update Cache on CentOS Machine
+  yum:
+    name: '*'
+    state: latest
+  when: ansible_distribution == "CentOS"
+
+- name: Install Node.js and npm on Ubuntu
+  apt:
+    name:
+      - nodejs
+      - npm
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install Node.js and npm on CentOS
+  yum:
+    name:
+      - nodejs
+      - npm
+    state: present
+  when: ansible_distribution == "CentOS"
+
+- name: Copy entire folder with subdirectories and hidden files
+  synchronize:
+    src: "{{ lookup('env', 'HOME') }}/{{ source_folder }}"
+    dest: "{{ remote_dest_folder }}"
+    recursive: yes
+    delete: no
+  notify: Start Server using npm run dev
+
+- name: Install packages using npm
+  npm:
+    path: "{{ remote_dest_folder }}"
+
